@@ -21,8 +21,8 @@ function Body() {
             <i className="fa fa-circle fa-stack-2x text-primary"></i>
             <i className="fa fa-university fa-stack-1x fa-inverse"></i>
           </span>
-          <h4 className="service-heading">E-Commerce</h4>
-          <p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+          <h4 className="service-heading">Online Banking</h4>
+          <p className="text-muted">Can use from your smartphone and from your computer.</p>
         </div>
         <div className="col-md-4">
           <span className="fa-stack fa-4x">
@@ -30,7 +30,7 @@ function Body() {
             <i className="fa fa-laptop fa-stack-1x fa-inverse"></i>
           </span>
           <h4 className="service-heading">Responsive Design</h4>
-          <p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+          <p className="text-muted">Easy to Use.</p>
         </div>
         <div className="col-md-4">
           <span className="fa-stack fa-4x">
@@ -38,7 +38,7 @@ function Body() {
             <i className="fa fa-lock fa-stack-1x fa-inverse"></i>
           </span>
           <h4 className="service-heading">Web Security</h4>
-          <p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+          <p className="text-muted">Your information is safe.</p>
         </div>
       </div>
     </div>

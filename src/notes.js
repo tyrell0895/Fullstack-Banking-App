@@ -17,6 +17,13 @@ const notes = [
       content:
         "Welcome to the Merit Banking Services site!  An efficient and caring provider for your banking needs."
     },
+    {
+      key: 3,
+      title: "",
+      content:
+        "Please Login --------------->"
+    },
+  
    
   ];
   

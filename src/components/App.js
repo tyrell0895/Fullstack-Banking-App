@@ -8,6 +8,7 @@ import About from "./About";
 import Note from "./Note";
 import notes from "../notes";
 
+
 var isLoggedIn = false;
 
 const currentTime = new Date(2019, 11, 1, 9).getHours();
@@ -24,14 +25,13 @@ function App() {
           content={noteItem.content}
         />
       ))}
-      <Top />
-    
-   <div className="container">
+    <div className="container">
         {/*Ternary Operator*/}
         {isLoggedIn ? <h1>Hello</h1> : <Login />}
         {/*AND Operator*/}
         {currentTime > 12 && <h1>Welcome to Merit Banking Services</h1>}
       </div>
+    <Top />
       <Body />
       <About />
       <Footer />
