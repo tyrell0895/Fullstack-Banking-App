@@ -1,42 +1,38 @@
-import React from "react";
+import React, { Component } from "react";
 import Header from "./Header";
-import Footer from "./Footer";
-import Login from "./Login";
-import Body from "./Body";
-import Top from "./Top";
-import About from "./About";
 import Note from "./Note";
 import notes from "../notes";
+import Body from "./Body";
+import About from "./About";
+import Footer from "./Footer";
 
+import Top from "./Top";
+import Connect from "./connect/Connect";
 
-var isLoggedIn = false;
-
-const currentTime = new Date(2019, 11, 1, 9).getHours();
-console.log(currentTime);
-
-function App() {
-  return (
-    <div>
-    <Header />
-    {notes.map(noteItem => (
-        <Note
-          key={noteItem.key}
-          title={noteItem.title}
-          content={noteItem.content}
-        />
-      ))}
-    <div className="container">
-        {/*Ternary Operator*/}
-        {isLoggedIn ? <h1>Hello</h1> : <Login />}
-        {/*AND Operator*/}
-        {currentTime > 12 && <h1>Welcome to Merit Banking Services</h1>}
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <div>
+          <Header />
+          {notes.map(noteItem => (
+            <Note
+              key={noteItem.key}
+              title={noteItem.title}
+              content={noteItem.content}
+            />
+          ))}
+          <Connect />
+          <left>
+            <Top />
+          </left>
+          <Body />
+          <About />
+          <Footer />
+        </div>
       </div>
-    <Top />
-      <Body />
-      <About />
-      <Footer />
-    </div>
-  );
+    );
+  }
 }
 
 export default App;

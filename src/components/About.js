@@ -78,7 +78,7 @@ function About() {
             <p className="text-muted">Backend Developer</p>
             <ul className="list-inline social-buttons">
               <li className="list-inline-item">
-                <a href="#something">
+                <a href="https://github.com/Andreal485">
                   <i className="fa fa-github"></i>
                 </a>
               </li>

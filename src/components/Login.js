@@ -4,7 +4,7 @@ import Input from "./Input";
 function Login() {
   return (
     <form className="form">
-      <Input type="text" placeholder="Username" />
+      Login Below:<Input type="text" placeholder="Username" />
       <Input type="password" placeholder="Password" />
       <button type="submit">Login</button>
     </form>

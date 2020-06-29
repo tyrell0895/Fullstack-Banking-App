@@ -28,23 +28,5 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Andreals PC/.m2/repository/org/hibernate/validator/hibernate-validator/6.0.19.Final/hibernate-validator-6.0.19.Final.jar" sourcepath="C:/Users/Andreals PC/.m2/repository/org/hibernate/validator/hibernate-validator/6.0.19.Final/hibernate-validator-6.0.19.Final-sources.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="org.hibernate.validator"/>
-			<attribute name="maven.artifactId" value="hibernate-validator"/>
-			<attribute name="maven.version" value="6.0.19.Final"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Andreals PC/.m2/repository/jakarta/validation/jakarta.validation-api/2.0.2/jakarta.validation-api-2.0.2.jar" sourcepath="C:/Users/Andreals PC/.m2/repository/jakarta/validation/jakarta.validation-api/2.0.2/jakarta.validation-api-2.0.2-sources.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="jakarta.validation"/>
-			<attribute name="maven.artifactId" value="jakarta.validation-api"/>
-			<attribute name="maven.version" value="2.0.2"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
