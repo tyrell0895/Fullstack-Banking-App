@@ -1,5 +1,6 @@
 import React from "react";
 import * as ReactBootStrap from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -10,44 +11,53 @@ function Header() {
         bg="dark"
         variant="dark"
       >
-        <ReactBootStrap.Navbar.Brand js-scroll-trigger href="#home">
+        <ReactBootStrap.Navbar.Brand js-scroll-trigger a href="/account">
           Merit Bank
         </ReactBootStrap.Navbar.Brand>
         <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
           <ReactBootStrap.Nav className="mr-auto">
-            <ReactBootStrap.Nav.Link href="#home">Home</ReactBootStrap.Nav.Link>
-            <ReactBootStrap.Nav.Link js-scroll-trigger href="#about">
-              About Us
+            <ReactBootStrap.Nav.Link a href="/account">
+              Home
+            </ReactBootStrap.Nav.Link>
+            <ReactBootStrap.Nav.Link js-scroll-trigger a href="/transfer">
+              Transfers
+            </ReactBootStrap.Nav.Link>
+            <ReactBootStrap.Nav.Link
+              js-scroll-trigger
+              a
+              href="/depositwithdraws"
+            >
+              Deposit / Withdrawals
             </ReactBootStrap.Nav.Link>
             <ReactBootStrap.NavDropdown
-              title="Accounts We Offer"
+              title="Accounts"
               id="collasible-nav-dropdown"
             >
-              <ReactBootStrap.NavDropdown.Item href="#accounts">
+              <ReactBootStrap.NavDropdown.Item a href="/checking">
                 Checking Accounts
               </ReactBootStrap.NavDropdown.Item>
-              <ReactBootStrap.NavDropdown.Item href="#accounts">
+              <ReactBootStrap.NavDropdown.Item a href="/savings">
                 Savings Account
               </ReactBootStrap.NavDropdown.Item>
-              <ReactBootStrap.NavDropdown.Item href="#accounts">
-                Certificate of Deposits Account (CD)
+              <ReactBootStrap.NavDropdown.Item a href="/cd">
+                Certificate of Deposit Account (CD)
               </ReactBootStrap.NavDropdown.Item>
               <ReactBootStrap.NavDropdown.Divider />
-              <ReactBootStrap.NavDropdown.Item href="#accounts">
+              <ReactBootStrap.NavDropdown.Item a href="/ira">
                 Individual Retirement Accounts (IRA)
               </ReactBootStrap.NavDropdown.Item>
             </ReactBootStrap.NavDropdown>
           </ReactBootStrap.Nav>
           <ReactBootStrap.Nav>
-            <ReactBootStrap.Nav.Link js-scroll-trigger href="#benefits">
-              Benefits
+            <ReactBootStrap.Nav.Link js-scroll-trigger a href="/register">
+              Create a New Account
             </ReactBootStrap.Nav.Link>
-            <ReactBootStrap.Nav.Link js-scroll-trigger href="/login">
+            <ReactBootStrap.Nav.Link js-scroll-trigger a href="/">
               Login
             </ReactBootStrap.Nav.Link>
-            <ReactBootStrap.Nav.Link eventKey={2} href="#new">
-              Create a New Account
+            <ReactBootStrap.Nav.Link eventKey={2} a href="/">
+              Logout
             </ReactBootStrap.Nav.Link>
           </ReactBootStrap.Nav>
         </ReactBootStrap.Navbar.Collapse>
