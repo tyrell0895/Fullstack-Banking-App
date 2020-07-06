@@ -48,34 +48,10 @@ public class BankAccount {
 	
 	
 	
-	public boolean withdraw(double amount) 
-				throws ExceedsAvailableBalanceException, NegativeAmountException {
-		
-		if(amount <= 0) { throw new NegativeAmountException(); }
-		if(amount > this.balance) { throw new ExceedsAvailableBalanceException(); }
-		
-		this.balance -= amount;
-		return true;
-	}
+
 	
 	
 	
-	
-	public boolean deposit(double amount) throws NegativeAmountException {
-		if(amount <= 0) { throw new NegativeAmountException(); }
-		
-		this.balance += amount;
-		return true;
-	}
-	
-	
-	public void transfer(BankAccount account, double amount) throws ExceedsAvailableBalanceException, NegativeAmountException {
-		
-		if(amount <= 0) { throw new NegativeAmountException(); }
-		if(amount > this.balance) { throw new ExceedsAvailableBalanceException(); }
-		this.withdraw(amount);
-		account.deposit(amount);
-		}
 	
 	
 	public double futureValue(int years) {

@@ -18,6 +18,7 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.meritamerica.fullstack.exceptions.AccountLimitExceededException;
 
 @Entity 
 @Table (name = "accountholders", catalog = "test")
@@ -49,7 +50,14 @@ public class AccountHolder implements Comparable <AccountHolder> {
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name ="account_Id", referencedColumnName = "account_Id")
-	private List<PersonalCheckingAccount> checkingAccounts;
+	private PersonalCheckingAccount personalCheckingAccount;
+	
+
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name ="account_Id", referencedColumnName = "account_Id")
+	private List <DBACheckingAccount> dbaCheckingAccounts;
+	
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name ="account_Id", referencedColumnName = "account_Id")
@@ -87,14 +95,14 @@ public class AccountHolder implements Comparable <AccountHolder> {
 		this.middleName = middleName;
 		this.lastName = lastName;
 		this.ssn = ssn;
-		this.checkingAccounts = new ArrayList <>();
+		this.dbaCheckingAccounts = new ArrayList <>();
 		this.savingsAccounts = new ArrayList <>();
 		this.cdAccounts = new ArrayList <>();
 	 
 	}
 	
 	public AccountHolder() {
-		this.checkingAccounts = new ArrayList <>();
+		this.dbaCheckingAccounts = new ArrayList <>();
 		this.savingsAccounts = new ArrayList <>();
 		this.cdAccounts = new ArrayList <>();
 		this.accountHolderContactDetails = new AccountHolderContactDetails();
@@ -102,22 +110,26 @@ public class AccountHolder implements Comparable <AccountHolder> {
 	
 	
 	
-	public boolean addCheckingAccount(PersonalCheckingAccount b) throws ExceedsCombinedBalanceLimitException {
+	public boolean addPersonalCheckingAccount(PersonalCheckingAccount b)throws AccountLimitExceededException {
 		if(b == null) { return false; }
-		if(getCheckingBalance() + getSavingsBalance() + b.getBalance() >= 250000 ) {
-			System.out.println(b.getBalance());
-			System.out.println(getCheckingBalance() + getSavingsBalance() + b.getBalance());
-			throw new ExceedsCombinedBalanceLimitException();
-		}
-		checkingAccounts.add(b);
+		if(personalCheckingAccount != null) {throw new AccountLimitExceededException();}
+		
+		personalCheckingAccount = b;
 		return true;
 	}
 	
-	public boolean addSavingsAccount(SavingsAccount b) throws ExceedsCombinedBalanceLimitException {
+	public boolean addDBACheckingAccount(DBACheckingAccount b){
 		if(b == null) { return false; }
-		if(getCheckingBalance() + getSavingsBalance() + b.getBalance() >= 250000 ) {
-			throw new ExceedsCombinedBalanceLimitException();
-		}
+		
+		dbaCheckingAccounts.add(b);
+		return true;
+	}
+	
+	
+	public boolean addSavingsAccount(SavingsAccount b)  {
+		if(b == null) { return false; }
+		
+		
 		savingsAccounts.add(b);
 		return true;
 	}
@@ -131,9 +143,13 @@ public class AccountHolder implements Comparable <AccountHolder> {
 	
 	
 	
-	public double getCheckingBalance() {
+	public double getPersonalAccountBalance() {
+		return personalCheckingAccount.balance;
+	}
+	
+	public double getDBACheckingBalance() {
 		double sum = 0;
-		for(BankAccount b : checkingAccounts) {
+		for(BankAccount b : dbaCheckingAccounts) {
 			sum += b.getBalance();
 		}
 		return sum;
@@ -154,7 +170,7 @@ public class AccountHolder implements Comparable <AccountHolder> {
 	}
 	public double getCombinedBalance() {
 		double sum = 0;
-		sum += getCheckingBalance();
+		sum += getDBACheckingBalance();
 		sum += getSavingsBalance();
 		sum += getCDBalance();
 		return sum;
@@ -171,9 +187,17 @@ public class AccountHolder implements Comparable <AccountHolder> {
 	public String getLastName() { return lastName; }
 	public AccountHolder setLastName(String s) { this.lastName = s; return this; }
 
+	public List<DBACheckingAccount> getDBACheckingAccounts() {
+		return dbaCheckingAccounts;
+	}
+
+	public void setDBACheckingAccount(List<DBACheckingAccount> dbaCheckingAccounts) {
+		this.dbaCheckingAccounts = dbaCheckingAccounts;
+	}
 	
 
-	public List<PersonalCheckingAccount> getCheckingAccounts() { return checkingAccounts; }
+
+	public PersonalCheckingAccount getPersonalCheckingAccount() { return personalCheckingAccount; }
 
 	public List<SavingsAccount> getSavingsAccounts() { return savingsAccounts; }
 
@@ -207,10 +231,15 @@ public class AccountHolder implements Comparable <AccountHolder> {
 
 	public void setCdAccounts(List<CDAccount> cdAccounts) {this.cdAccounts = cdAccounts;}
 
-	public void setCheckingAccounts(List<PersonalCheckingAccount> checkingAccounts) {this.checkingAccounts = checkingAccounts;}
+	public void setPersonalCheckingAccount(PersonalCheckingAccount checkingAccounts) {this.personalCheckingAccount = checkingAccounts;}
 
 	public void setSavingsAccounts(List<SavingsAccount> savingsAccounts) {this.savingsAccounts = savingsAccounts;}
 
+	
+	
+	
+	
+	
 	
 	@Override
 	public int compareTo(AccountHolder other) {
